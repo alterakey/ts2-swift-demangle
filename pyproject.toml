@@ -1,0 +1,49 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = 'ts2-swift-demangle'
+authors = [
+  {name='Takahiro Yoshimura', email='alterakey@protonmail.com'}
+]
+classifiers = [
+    "Topic :: Security",
+    "Environment :: Console",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: POSIX :: BSD",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: iOS",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Private :: Do Not Upload",
+]
+dynamic = ['version', 'description']
+dependencies = [
+  "fastapi~=0.110",
+  'uvicorn~=0.29',
+]
+
+[tool.flit.module]
+name = "demangle"
+
+[tool.mypy]
+strict = true
+show_error_codes = true
+enable_error_code = "redundant-expr"
+
+[project.optional-dependencies]
+dev = [
+  "mypy~=1.7",
+  "pyproject-flake8~=6.1",
+  "typing_extensions~=4.1",
+]
+
+[[tool.mypy.overrides]]
+module = [
+]
+ignore_missing_imports = true
+
+# pyproject-flake8 (pflake8)
+[tool.flake8]
+extend-ignore = "E301,E302,E265,E114,E501,E231,E252,E261,E701,E722,E741"
+indent-size = 2
